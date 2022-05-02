@@ -207,45 +207,12 @@ int logical2physical(int addr, char w_operation)
 
     //  HERE: put your code
 
-/*
-    // check Page Table
-    if (PT_table[PT_VAL(addr)].not_allowed)
-    {
-        printf("\t\tThe  PT entry %d is not allowed \n", PT_VAL(addr));
-        return(-1);
-    }
-
-    printf("\t\tAccessing Page Table: ==> ");
-    if (PT_table[PT_VAL(addr)].in_ram)
-    {
-        printf("the PAGE is in RAM (frame: %d offset:%d) !!! \n",
-            PT_table[PT_VAL(addr)].frame_num, OFFSET_VAL(addr));
-    }
-    else
-    {
-        int new_frm = getFrame();      // no need to check (SWAP is not supported)
-
-        printf("PAGE is NOT in RAM => bring it to RAM (frame: %d ooset=%d) \n",
-            new_frm, OFFSET_VAL(addr));
-        FrameInfo[new_frm].busy = 1;                // mark as busy
-
-        PT_table[PT_VAL(addr)].in_ram = 1;      // mark now PT2 is in RAM
-        PT_table[PT_VAL(addr)].frame_num = new_frm;
-    }
-
-    // HERE: the Page is already in RAM 
-    printf("\t\tAccessing the data: ==> frame: %d offset: %d \n",
-        PT_table[PT_VAL(addr)].frame_num, OFFSET_VAL(addr));
-
-    return(PHY_ADDR(PT_table[PT_VAL(addr)].frame_num, OFFSET_VAL(addr)));
-*/
 }
 
 
 /*
-    Get a frame for a Page to be loaded.
-    If there is free frame, just return it
-    If no free frame: get rid of one of the pages to free the frame - THIS PART IS NOT IMPLEMNTED YET
+    Get a free frame (for a Page to be loaded).
+    If there is no free frame: make one of the frames to be free  - THIS IS CURRENLY NOT IMPLEMENTED.
 
     Current version:
         - if no free Frame, just EXIT.
